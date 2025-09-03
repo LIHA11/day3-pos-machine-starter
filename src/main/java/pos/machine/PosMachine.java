@@ -62,14 +62,14 @@ public class PosMachine {
 
         return sb.toString();
     }
-//
-//    private String printReceiptlist(List<ReceiptItem> receiptItems) {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("***<store earning no money>Receipt***\n");
-//        sb.append(printItemList(receiptItems));
-//        sb.append("**********************");
-//        return sb.toString();
-//    }
+
+    private String printReceiptlist(List<ReceiptItem> receiptItems) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***<store earning no money>Receipt***\n");
+        sb.append(printItemList(receiptItems));
+        sb.append("**********************");
+        return sb.toString();
+    }
 
 
 }
