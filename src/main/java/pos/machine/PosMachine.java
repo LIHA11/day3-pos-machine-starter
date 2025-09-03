@@ -46,22 +46,22 @@ public class PosMachine {
         return receiptItems;
     }
 
-//
-//    private String printItemList(List<ReceiptItem> receiptItems) {
-//        StringBuilder sb = new StringBuilder();
-//        int total = 0;
-//
-//        for (ReceiptItem item : receiptItems) {
-//            sb.append(String.format("Name: %s, Quantity: %d, Unit price: %d (yuan), Subtotal: %d (yuan)\n",
-//                    item.getName(), item.getQuantity(), item.getUnitPrice(), item.getSubTotal()));
-//            total += item.getSubTotal();
-//        }
-//
-//        sb.append("----------------------\n");
-//        sb.append(String.format("Total: %d (yuan)\n", total));
-//
-//        return sb.toString();
-//    }
+
+    private String printItemList(List<ReceiptItem> receiptItems) {
+        StringBuilder sb = new StringBuilder();
+        int total = 0;
+
+        for (ReceiptItem item : receiptItems) {
+            sb.append(String.format("Name: %s, Quantity: %d, Unit price: %d (yuan), Subtotal: %d (yuan)\n",
+                    item.getName(), item.getQuantity(), item.getUnitPrice(), item.getSubTotal()));
+            total += item.getSubTotal();
+        }
+
+        sb.append("----------------------\n");
+        sb.append(String.format("Total: %d (yuan)\n", total));
+
+        return sb.toString();
+    }
 //
 //    private String printReceiptlist(List<ReceiptItem> receiptItems) {
 //        StringBuilder sb = new StringBuilder();
