@@ -26,26 +26,26 @@ public class PosMachine {
         return shoppingList;
     }
 
-//    private List<ReceiptItem> calculate(List<Item> shoppingList) {
-//        Map<String, Integer> quantityMap = new LinkedHashMap<>();
-//        Map<String, Item> itemMap = new LinkedHashMap<>();
-//
-//        for (Item item : shoppingList) {
-//            String barcode = item.getBarcode();
-//            quantityMap.put(barcode, quantityMap.getOrDefault(barcode, 0) + 1);
-//            itemMap.putIfAbsent(barcode, item);
-//        }
-//
-//        List<ReceiptItem> receiptItems = new ArrayList<>();
-//        for (String barcode : quantityMap.keySet()) {
-//            Item item = itemMap.get(barcode);
-//            int quantity = quantityMap.get(barcode);
-//            receiptItems.add(new ReceiptItem(item.getName(), quantity, item.getPrice()));
-//        }
-//
-//        return receiptItems;
-//    }
-//
+    private List<ReceiptItem> calculate(List<Item> shoppingList) {
+        Map<String, Integer> quantityMap = new LinkedHashMap<>();
+        Map<String, Item> itemMap = new LinkedHashMap<>();
+
+        for (Item item : shoppingList) {
+            String barcode = item.getBarcode();
+            quantityMap.put(barcode, quantityMap.getOrDefault(barcode, 0) + 1);
+            itemMap.putIfAbsent(barcode, item);
+        }
+
+        List<ReceiptItem> receiptItems = new ArrayList<>();
+        for (String barcode : quantityMap.keySet()) {
+            Item item = itemMap.get(barcode);
+            int quantity = quantityMap.get(barcode);
+            receiptItems.add(new ReceiptItem(item.getName(), quantity, item.getPrice()));
+        }
+
+        return receiptItems;
+    }
+
 //
 //    private String printItemList(List<ReceiptItem> receiptItems) {
 //        StringBuilder sb = new StringBuilder();
