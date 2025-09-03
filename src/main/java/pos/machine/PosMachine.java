@@ -4,12 +4,12 @@ import java.util.*;
 
 public class PosMachine {
 
-//    public String printReceipt(List<String> barcodes) {
-//        List<Item> allItems = ItemsLoader.loadAllItems();
-//        List<Item> shoppingList = scanBarcode(barcodes, allItems);
-//        List<ReceiptItem> receiptItems = calculate(shoppingList);
-//        return printReceiptlist(receiptItems);
-//    }
+    public String printReceipt(List<String> barcodes) {
+        List<Item> allItems = ItemsLoader.loadAllItems();
+        List<Item> shoppingList = scanBarcode(barcodes, allItems);
+        List<ReceiptItem> receiptItems = calculate(shoppingList);
+        return printReceiptlist(receiptItems);
+    }
 
     private List<Item> scanBarcode(List<String> barcodes, List<Item> allItems) {
         Map<String, Item> itemMap = new HashMap<>();
