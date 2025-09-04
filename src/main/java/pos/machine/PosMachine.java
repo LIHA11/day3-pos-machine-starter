@@ -26,7 +26,14 @@ public class PosMachine {
         return shoppingList;
     }
 
-    private List<ReceiptItem> calculate(List<Item> shoppingList) {
+
+    private List<Item> getShoppingList(List<Item> allItems) {
+        // 按context map理解，这步其实直接返回所有商品
+        return new ArrayList<>(allItems);
+    }
+
+
+    private List<ReceiptItem> getSumprice(List<Item> shoppingList) {
         Map<String, Integer> quantityMap = new LinkedHashMap<>();
         Map<String, Item> itemMap = new LinkedHashMap<>();
 
@@ -42,8 +49,12 @@ public class PosMachine {
             int quantity = quantityMap.get(barcode);
             receiptItems.add(new ReceiptItem(item.getName(), quantity, item.getPrice()));
         }
-
         return receiptItems;
+    }
+
+    private List<ReceiptItem> calculate(List<Item> allItems) {
+        List<Item> shoppingList = getShoppingList(allItems);
+        return getSumprice(shoppingList);
     }
 
 
