@@ -6,29 +6,31 @@ public class PosMachine {
 
     public String printReceipt(List<String> barcodes) {
         List<Item> allItems = ItemsLoader.loadAllItems();
+        validateBarcodes(barcodes, allItems);
         List<Item> shoppingList = scanBarcode(barcodes, allItems);
         List<ReceiptItem> receiptItems = calculate(shoppingList);
         return printReceiptlist(receiptItems);
     }
 
-    private List<Item> scanBarcode(List<String> barcodes, List<Item> allItems) {
-        Map<String, Item> itemMap = new HashMap<>();
-        for (Item item : allItems) {
-            itemMap.put(item.getBarcode(), item);
-        }
 
-        List<Item> shoppingList = new ArrayList<>();
-        for (String barcode : barcodes) {
-            if (itemMap.containsKey(barcode)) {
-                shoppingList.add(itemMap.get(barcode));
+    private void validateBarcodes(List<String> barcodes, List<Item> allItems) {
+        Set<String> validBarcodeSet = new HashSet<>();
+        for (Item item : allItems) {
+            validBarcodeSet.add(item.getBarcode());
+        }
+        List<String> invalidBarcodes = new ArrayList<>();
+        for (String bc : barcodes) {
+            if (!validBarcodeSet.contains(bc)) {
+                invalidBarcodes.add(bc);
             }
         }
-        return shoppingList;
+        if (!invalidBarcodes.isEmpty()) {
+            throw new IllegalArgumentException("Invalid barcodes found: " + invalidBarcodes);
+        }
     }
 
 
     private List<Item> getShoppingList(List<Item> allItems) {
-        // 按context map理解，这步其实直接返回所有商品
         return new ArrayList<>(allItems);
     }
 
